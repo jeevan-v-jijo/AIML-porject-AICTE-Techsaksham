@@ -1,9 +1,4 @@
-#this is the code that is to be run in the colab
 
-!pip install streamlit
-!pip install streamlit pyngrok
-with open('app.py','w') as f:
-  f.write("""
 import streamlit as st
 import numpy as np
 import tensorflow as tf
@@ -86,13 +81,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-""")
-  from pyngrok import ngrok
-!pkill -f streamlit || echo "No Streamlit process was running."
-
-# Start Streamlit app in the background
-!streamlit run app.py &
-
-# Expose the app to the web using ngrok
-public_url = ngrok.connect(8501)
-print(f"Streamlit app is live at {public_url}")
